@@ -1,0 +1,20 @@
+<template>
+    <div class="page page-home">
+        <h3>
+            HELLO WORLD
+        </h3>
+        <p>
+            <button class="button" id="home-back">后退</button>
+            <button id="home-go">前进</button>
+        </p>
+        <p> 
+            <button id="home-test1">home</button>
+            <button id="home-test2">apply</button>
+        </p>
+
+        <div class="cl-test">
+            {{test}}
+        </div>
+    </div>
+  
+</template>

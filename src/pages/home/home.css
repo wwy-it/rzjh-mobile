@@ -1,0 +1,21 @@
+.page-home {
+    width: 100%;
+}
+
+.page-home h3 {
+    margin: 50px;
+    text-align: center;
+    height: 50px;
+}
+
+.page-home p {
+    height: 80px;
+    line-height: 100px;
+    text-align: center;
+}
+
+.page-home .cl-test {
+    height: 50px;
+    background-color: pink;
+    text-align: center;
+}

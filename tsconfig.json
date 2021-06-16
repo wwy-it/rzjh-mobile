@@ -1,0 +1,27 @@
+{
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+    ],
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "baseUrl": "./", /**工作根目录*/
+        "paths": {
+            "/@/*": [
+                "./src/*"
+            ],
+            "@*": [
+                "./src/*"
+            ]
+        }, /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "noEmitOnError": true,
+        "module": "commonjs",
+        "target": "es5",
+        "jsx": "react",
+        "allowJs": true
+    }
+}

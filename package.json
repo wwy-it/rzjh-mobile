@@ -17,6 +17,7 @@
         "weui": "^2.4.4"
     },
     "devDependencies": {
+        "copy-webpack-plugin": "^9.0.0",
         "css-loader": "^3.6.0",
         "file-loader": "^6.2.0",
         "html-loader": "^2.1.2",

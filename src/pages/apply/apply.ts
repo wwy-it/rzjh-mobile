@@ -12,17 +12,18 @@ export default {
     setup: function () {
         const params = {
             name: '',
-            sex: '',
+            sex: '男',
             auth_id: '',
             cell_phone: '',
             company_address: '',
+            estimate_turnover: '100万~200万',
         }
 
         const toastDom: HTMLElement = document.querySelector("#toast")
         const textMoreToastDom: HTMLElement = document.querySelector("#textMoreToast")
 
         document.querySelector("#showPicker").addEventListener("click", function () {
-            let t = this
+            let $this = this
             weui.picker([{
                 label: '男',
                 value: '男'
@@ -35,10 +36,46 @@ export default {
                 },
                 onConfirm: function (result: any) {
                     let sex = result[0].value
-                    t.innerText = sex
+                    $this.innerText = sex
                     params.sex = sex
                 },
                 title: '性别'
+            });
+        }, false);
+
+        document.querySelector("#turnover").addEventListener("click", function () {
+            let $this = this
+            weui.picker([
+                {
+                    label: '100万~200万',
+                    value: '100万~200万'
+                },
+                {
+                    label: '200万~500万',
+                    value: '200万~500万'
+                },
+                {
+                    label: '500万~1000万',
+                    value: '500万~1000万'
+                },
+                {
+                    label: '1000万~2000万',
+                    value: '1000万~2000万'
+                },
+                {
+                    label: '2000万以上',
+                    value: '2000万以上'
+                },
+            ], {
+                onChange: function (result: any) {
+                    console.log(result);
+                },
+                onConfirm: function (result: any) {
+                    let turnover = result[0].value
+                    $this.innerText = turnover
+                    params.estimate_turnover = turnover
+                },
+                title: '过去12个月'
             });
         }, false);
 

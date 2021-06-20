@@ -64,6 +64,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="cl-item">
+                            <div class="cl-icon icon2"></div>
+                            <div class="weui-cell weui-cell_active weui-cell_access weui-cell_select weui-cell_select-after">
+                                <div class="weui-cell__hd">
+                                    <label class="weui-label">预估营业额</label>
+                                </div>
+                                <div class="weui-cell__bd" id="turnover">100万~200万</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

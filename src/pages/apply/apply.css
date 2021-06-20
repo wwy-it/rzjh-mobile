@@ -5,7 +5,7 @@
 .page-apply .head {
     width: 100vw;
     height: 32vw;
-    background-image: url("../../assets/image/index-head.png");
+    background-image: url("../../assets/image/head.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -54,25 +54,32 @@
 }
 
 .cl-item .cl-icon.icon1 {
-    background-image: url("../../assets/image/apply-item1.png");
+    background-image: url("../../assets/image/apply1.png");
 }
 
 .cl-item .cl-icon.icon2 {
-    background-image: url("../../assets/image/apply-item2.png");
+    background-image: url("../../assets/image/apply2.png");
 }
 
 .cl-item .cl-icon.icon3 {
-    background-image: url("../../assets/image/apply-item3.png");
+    background-image: url("../../assets/image/apply3.png");
 }
 
 .cl-item .cl-icon.icon4 {
-    background-image: url("../../assets/image/apply-item4.png");
+    background-image: url("../../assets/image/apply4.png");
 }
 
 .cl-item .cl-icon.icon5 {
-    background-image: url("../../assets/image/apply-item5.png");
+    background-image: url("../../assets/image/apply5.png");
 }
 
 .cl-item .weui-cell {
     flex-grow: 1;
+}
+
+.cl-item .weui-cell_select .weui-cell__bd {
+    /* padding-right: 10vw; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

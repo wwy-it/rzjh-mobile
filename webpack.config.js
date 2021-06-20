@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: "./src/main.ts",
@@ -24,6 +25,7 @@ module.exports = {
                 test: /\.ts$/,
                 use: "ts-loader"
             },
+            //使用url-loader必须集成file-loader,url-loader里面有png|jpg|gif就不用放在file-loader处理了.
             {
                 test: /\.(png|jpg|gif)$/i,
                 use: [{
@@ -55,6 +57,12 @@ module.exports = {
             template: "./public/index.html",
             filename: "../index.html",
             hash: true,
+        }),
+        new CopyWebpackPlugin({
+            patterns: [{
+                from: './public',
+                to: '../public'
+            }],
         }),
         new webpack.HotModuleReplacementPlugin()
     ],

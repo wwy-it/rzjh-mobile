@@ -12,7 +12,6 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "axios": "^0.21.0",
         "core-js": "^3.6.5",
         "weui": "^2.4.4"
     },

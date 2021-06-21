@@ -1,6 +1,6 @@
 //此文件封装成路由
 import { Tree } from '@/utils/model/cl-router'
-import { createRouter, getRouter } from '@/utils/cl-router'
+import { createRouter } from '@/utils/cl-router'
 
 const routes: Tree[] = [
     {

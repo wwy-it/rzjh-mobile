@@ -1,5 +1,5 @@
-import axios from 'axios'
 import "./apply.css"
+import $http from '@/assets/js/http'
 import { push } from '@/utils/cl-router'
 
 interface Person {
@@ -62,26 +62,27 @@ export default {
 
             console.log(params)
 
-            axios({
-                method: "post",
-                url: "/add_new_owner",
-                data: {
+            $http.request({
+                method: "POST",
+                path: "/add_new_owner",
+                params: {
                     owner: { ...params }
                 }
-            }).then((res) => {
+            }).then((res: any) => {
+                console.log(res)
                 console.log(res)
                 toastDom.style.display = "block"
                 setTimeout(function () {
                     toastDom.style.display = "none"
                 }, 2000);
-
-            }).catch((err) => {
+            }).catch((err: any) => {
                 console.log(err)
                 textMoreToastDom.style.display = "block"
                 setTimeout(function () {
                     textMoreToastDom.style.display = "none"
                 }, 2000);
             })
+
         }, false);
     }
 }

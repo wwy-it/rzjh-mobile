@@ -1,6 +1,5 @@
-import axios from 'axios'
 import "./apply.css"
-import { push } from '@/utils/cl-router'
+import $http from '@/assets/js/http'
 
 interface Person {
     firstName: string;
@@ -16,7 +15,7 @@ export default {
             auth_id: '',
             cell_phone: '',
             company_address: '',
-            estimate_turnover: '100万~200万',
+            estimate_turnover: '100万~200万(RMB)',
         }
 
         const toastDom: HTMLElement = document.querySelector("#toast")
@@ -47,24 +46,24 @@ export default {
             let $this = this
             weui.picker([
                 {
-                    label: '100万~200万',
-                    value: '100万~200万'
+                    label: '100万~200万(RMB)',
+                    value: '100万~200万(RMB)'
                 },
                 {
-                    label: '200万~500万',
-                    value: '200万~500万'
+                    label: '200万~500万(RMB)',
+                    value: '200万~500万(RMB)'
                 },
                 {
-                    label: '500万~1000万',
-                    value: '500万~1000万'
+                    label: '500万~1000万(RMB)',
+                    value: '500万~1000万(RMB)'
                 },
                 {
-                    label: '1000万~2000万',
-                    value: '1000万~2000万'
+                    label: '1000万~2000万(RMB)',
+                    value: '1000万~2000万(RMB)'
                 },
                 {
-                    label: '2000万以上',
-                    value: '2000万以上'
+                    label: '2000万以上(RMB)',
+                    value: '2000万以上(RMB)'
                 },
             ], {
                 onChange: function (result: any) {
@@ -99,26 +98,27 @@ export default {
 
             console.log(params)
 
-            axios({
-                method: "post",
-                url: "/add_new_owner",
-                data: {
+            $http.request({
+                method: "POST",
+                path: "/add_new_owner",
+                params: {
                     owner: { ...params }
                 }
-            }).then((res) => {
+            }).then((res: any) => {
+                console.log(res)
                 console.log(res)
                 toastDom.style.display = "block"
                 setTimeout(function () {
                     toastDom.style.display = "none"
                 }, 2000);
-
-            }).catch((err) => {
+            }).catch((err: any) => {
                 console.log(err)
                 textMoreToastDom.style.display = "block"
                 setTimeout(function () {
                     textMoreToastDom.style.display = "none"
                 }, 2000);
             })
+
         }, false);
     }
 }

@@ -54,23 +54,27 @@
 }
 
 .cl-item .cl-icon.icon1 {
-    background-image: url("../../assets/image/apply1.png");
+    background-image: url("../../assets/image/apply1@3x.png");
 }
 
 .cl-item .cl-icon.icon2 {
-    background-image: url("../../assets/image/apply2.png");
+    background-image: url("../../assets/image/apply2@3x.png");
 }
 
 .cl-item .cl-icon.icon3 {
-    background-image: url("../../assets/image/apply3.png");
+    background-image: url("../../assets/image/apply3@3x.png");
 }
 
 .cl-item .cl-icon.icon4 {
-    background-image: url("../../assets/image/apply4.png");
+    background-image: url("../../assets/image/apply4@3x.png");
 }
 
 .cl-item .cl-icon.icon5 {
-    background-image: url("../../assets/image/apply5.png");
+    background-image: url("../../assets/image/apply5@3x.png");
+}
+
+.cl-item .cl-icon.icon6 {
+    background-image: url("../../assets/image/apply6@3x.png");
 }
 
 .cl-item .weui-cell {

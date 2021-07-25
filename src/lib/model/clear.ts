@@ -37,7 +37,17 @@ interface StateCallback {
  * 组件周期状态容器 
  */
 export interface StateContainer {
-    onInit?: () => void
     onLoad?: () => void
+    onShow?: () => void
     onHide?: () => void
+}
+
+
+export interface ComponentElement {
+    dom?: HTMLElement
+    data?: any
+    onLoad?: () => void
+    onShow?: () => void
+    onHide?: () => void
+    [propName: string]: any
 }

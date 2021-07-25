@@ -1,0 +1,11 @@
+<template>
+    <div class="page page-amount">
+        <div class="amount-head">恭喜！根据您的大数据预估额度为：</div>
+        <div class="amount-money">350-550万</div>
+        <div class="amount-content">马上绑定店铺授权，申请额度吧！</div>
+
+        <div class="weui-form__opr-area">
+            <a class="weui-btn weui-btn_primary" href="javascript:" id="complete">下一步</a>
+        </div>
+    </div>
+</template>

@@ -6,3 +6,7 @@ declare module "*.zml" {
     const content: string
     export default content
 }
+
+interface Window {
+    [propName: string]: any
+}

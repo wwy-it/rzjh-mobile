@@ -11,7 +11,8 @@ interface Config {
     body?: any
 }
 
-let host: string = "https://aiq.group:5000"
+// let host: string = "https://aiq.group:5000"
+let host: string = "http://8.140.50.228:5000"
 
 function request(options: Options) {
     options.path = options.path || ''

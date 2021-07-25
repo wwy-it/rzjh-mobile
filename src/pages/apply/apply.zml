@@ -83,7 +83,6 @@
             <div class="weui-form__opr-area">
                 <a class="weui-btn weui-btn_primary" href="javascript:" id="complete">确定</a>
             </div>
-            <div class="test"></div>
         </div>
         <!-- BEGIN toast -->
         <div id="toast" style="display: none;">

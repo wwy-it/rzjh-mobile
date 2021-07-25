@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="myBtn">2342342342423423423</div>
+
+    <script>
+        // let page = {
+        //     click: undefined
+        // }
+
+        // let d = document.getElementById("myBtn")
+        // console.log(d)
+        // d.addEventListener("click", page.click);
+
+        // setTimeout(() => {
+        //     console.log(444)
+        //     page.click = function () {
+        //         console.log(5)
+        //     }
+        // }, 5000)
+        // const t = {
+        //     b: 234
+        // }
+
+        // function test() {
+        //     const data = {
+        //         a: 2
+        //     }
+
+        //     let fun = function (data) {
+        //         console.log(data)
+        //     }
+
+        //     test = {
+        //         get(target, key) {
+        //             let result = target[key];
+        //             return result;
+        //         },
+        //         set(target, key, value) {
+        //             fun(data)
+        //             target[key] = value
+        //         }
+        //     }
+
+        //     ttt = new Proxy(t, test);
+
+        //     data.b = 2354
+
+        //     ttt.b = 7
+        // }
+
+
+        // test()
+
+        // setTimeout(function () {
+        //     ttt.b = 7
+        // }, 1000)
+
+
+        function fun(window) {
+            console.log(window)
+            console.log(window.document)
+            console.log(location)
+        }
+        fun({
+            aaa: 234
+        })
+    </script>
+</body>
+
+</html>

@@ -1,16 +1,21 @@
 //此文件封装成路由
-import { Tree } from '@/utils/model/cl-router'
-import { createRouter } from '@/utils/cl-router'
+import { Tree } from '../lib/model/clear'
+import { createRouter } from '../lib/clear'
 
 const routes: Tree[] = [
     {
         path: '/',
+        component: () => import('@/pages/home/home')
+    },
+    {
+        path: '/apply',
         component: () => import('@/pages/apply/apply')
     },
     {
-        path: '/home',
-        component: () => import('@/pages/home/home')
-    }
+        path: '/amount',
+        component: () => import('@/pages/amount/amount')
+    },
+   
 ]
 
 function init() {

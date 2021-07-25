@@ -1,40 +1,63 @@
 import "./home.css"
-import { push } from '@/utils/cl-router'
+import { push, onLoad, onShow, useState } from '../../lib/clear'
 
 export default {
     template: () => import('./home.zml'),
 
     setup: function () {
-        const back: HTMLElement = document.getElementById("home-back")
-        const go: HTMLElement = document.getElementById("home-go")
-        const test1: HTMLElement = document.getElementById("home-test1")
-        const test2: HTMLElement = document.getElementById("home-test2")
-
-        back.addEventListener("click", function () {
-            console.log("back")
-            window.history.back()
-            console.log(history)
+        const state = useState({
+            hello: "HELLO ",
+            world: 'WORLD!',
+            t: 0
         })
 
-        go.addEventListener("click", function () {
-            console.log("go")
-            window.history.forward()
-            console.log(history)
+        setTimeout(() => {
+            state.t = 100
+        }, 1000);
+
+        onShow(() => {
+            homeInit()
         })
 
-        test1.addEventListener("click", function () {
-            window.history.pushState(null, null, "");
-            // window.history.replaceState(null, null, "hello");
-            console.log(history)
-        })
-        test2.addEventListener("click", function () {
+        function btnClick() {
+            state.t++
+        }
+
+        function toApply() {
             push({
                 path: '/apply'
             })
-        })
+        }
+        
+        function toAmount() {
+            push({
+                path: '/amount'
+            })
+        }
 
         return {
-            test: 1111
+            toApply,
+            toAmount,
+            btnClick
         }
-    }
+    },
+
+}
+
+function homeInit() {
+    const back: HTMLElement = document.getElementById("home-back")
+    const go: HTMLElement = document.getElementById("home-go")
+
+    back.addEventListener("click", function () {
+        console.log("back")
+        window.history.back()
+        console.log(history)
+    })
+
+    go.addEventListener("click", function () {
+        console.log("go")
+        window.history.forward()
+        console.log(history)
+    })
+
 }

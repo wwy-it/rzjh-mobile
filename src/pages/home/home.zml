@@ -1,20 +1,18 @@
 <template>
     <div class="page page-home">
-        <h3>
-            HELLO WORLD
-        </h3>
+        <h3>{{hello}} {{world}}</h3>
+        <p>{{t*100}}</p>
+        <p>{{t}}</p>
+        <p>
+            <button class="button" bindtap="btnClick">测试按钮</button>
+        </p>
         <p>
             <button class="button" id="home-back">后退</button>
             <button id="home-go">前进</button>
         </p>
-        <p> 
-            <button id="home-test1">home</button>
-            <button id="home-test2">apply</button>
+        <p>
+            <button bindtap="toApply">apply</button>
+            <button bindtap="toAmount">amount</button>
         </p>
-
-        <div class="cl-test">
-            {{test}}
-        </div>
     </div>
-  
 </template>

@@ -66,14 +66,32 @@
         // }, 1000)
 
 
-        function fun(window) {
-            console.log(window)
-            console.log(window.document)
-            console.log(location)
-        }
-        fun({
-            aaa: 234
+        // function fun(window) {
+        //     console.log(window)
+        //     console.log(window.document)
+        //     console.log(location)
+        // }
+        // fun({
+        //     aaa: 234
+        // })
+
+
+        let contentRE = /(?<=\{\{)([\s\S]+?)(?=\}\})/mg
+
+        let name = 'aaa {{a + b}} ccc {{abd}}';
+        console.log(name, 'name')
+        let uw = name.replace(/\{\{([\s\S]+?)\}\}/mg, function (word) {
+            let variables = word.match(contentRE)
+            if (variables) {
+                let v = variables[0]
+                console.log(v)
+                return v
+            } else {
+                return word
+            }
         })
+
+        console.log(uw, 555)
     </script>
 </body>
 

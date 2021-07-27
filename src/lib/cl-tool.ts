@@ -53,7 +53,6 @@ export function templateParsing(node: HTMLElement, data?: any): void {
                 for (let i = 0; i < re.length; i++) {
 
                 }
-                console.log(re, 're')
             }
         }
     }

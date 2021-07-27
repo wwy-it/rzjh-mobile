@@ -226,7 +226,7 @@ let contentRE = /(?<=\{\{)([\s\S]+?)(?=\}\})/mg
  */
 function templateParsing(node: any, e?: ComponentElement): HTMLElement {
     var treeWalker = document.createTreeWalker(node, NodeFilter.SHOW_ALL, null)
-    var currentNode: any = treeWalker.currentNode;
+    var currentNode: any = treeWalker.currentNode
     while (currentNode) {
         if (currentNode.nodeType === 1) {
             //递归先序遍历子节点
@@ -239,13 +239,17 @@ function templateParsing(node: any, e?: ComponentElement): HTMLElement {
             let content = currentNode.textContent.trim()
 
             if (content && content.match(contentRE)) {
-                let re = content.match(contentRE)
-                let t = ''
-                for (let i = 0; i < re.length; i++) {
-                    let variable = re[i]
-                    let v = commandParsing(e.data, variable)
-                    t = t + v
-                }
+                //提取表达式并且返回表达式解析之后的文本
+                let t = content.replace(/\{\{([\s\S]+?)\}\}/mg, (word) => {
+                    let variables = word.match(contentRE)
+                    if (variables) {
+                        let variable = variables[0]
+                        let v = commandParsing(e.data, variable)
+                        return v
+                    } else {
+                        return word
+                    }
+                })
                 currentNode.textContent = t
             }
         }

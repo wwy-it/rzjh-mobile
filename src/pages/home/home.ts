@@ -6,17 +6,20 @@ export default {
 
     setup: function () {
         const state = useState({
-            hello: "HELLO ",
+            hello: "HELLO",
             world: 'WORLD!',
+            testObject: {
+                k: 999
+            },
             t: 0
         })
 
-        setTimeout(() => {
-            state.t = 100
-        }, 1000);
-
         onShow(() => {
             homeInit()
+
+            setTimeout(() => {
+                state.t = 100
+            }, 1000);
         })
 
         function btnClick() {
@@ -28,7 +31,7 @@ export default {
                 path: '/apply'
             })
         }
-        
+
         function toAmount() {
             push({
                 path: '/amount'

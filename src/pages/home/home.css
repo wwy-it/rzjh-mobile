@@ -14,8 +14,13 @@
     text-align: center;
 }
 
-.page-home .cl-test {
-    height: 50px;
+.page-home .back-pink {
     background-color: pink;
-    text-align: center;
+}
+
+.li{
+    width: 100%;
+    height: 30px;
+    background-color: pink;
+    margin-top: 5px;
 }

@@ -1,33 +1,43 @@
 <template>
     <div class="page page-home">
-        <!-- 测试多表达式 -->
-        <h3>{{hello}} {{world}}</h3>
 
-        <!-- 测试对象数据 -->
-        <p>{{testObject.k}}</p>
+        <!-- 测试class 样式切换 -->
+        <div class="{{testClass?'back-pink':''}}">
 
-        <!-- 测试代码块解析 -->
-        <p>{{t*100}} *4545</p>
+            <!-- 测试多表达式 -->
+            <h3>{{hello}} {{world}}</h3>
 
-        <!-- 测试夹杂原始文本表达式 -->
-        <p>test test test{{t}}testtest</p>
+            <!-- 测试对象数据 -->
+            <p>{{testObject.k}}</p>
 
-        <!-- 测试数据响应 -->
-        <p>
-            <button class="button" bindtap="btnClick">测试按钮</button>
-        </p>
+            <!-- 测试代码块解析 -->
+            <p>{{t*100}} *4545</p>
 
-        <p>
+            <!-- 测试夹杂原始文本表达式 -->
+            <p>test test test {{t}} test-test</p>
+
+        </div>
+
+        <!-- 测试if -->
+        <p c:if="{{testClass}}" class="tttytyytyt">
             <button class="button" id="home-back">后退</button>
             <button id="home-go">前进</button>
         </p>
 
-        <!-- 测试路由跳转  -->
+        <!-- 测试路由跳转 -->
         <p>
             <button bindtap="toApply">apply</button>
             <button bindtap="toAmount">amount</button>
         </p>
 
+        <ul>
+            <li class="li" c:for="{{items}}"></li>
+        </ul>
+
+         <!-- 测试点击方法 -->
+        <p>
+            <button class="button" bindtap="btnClick">测试按钮</button>
+        </p>
 
     </div>
 </template>

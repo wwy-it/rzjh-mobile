@@ -6,24 +6,27 @@ export default {
 
     setup: function () {
         const state = useState({
-            hello: "HELLO",
+            hello: "HELLO ",
             world: 'WORLD!',
             testObject: {
                 k: 999
             },
-            t: 0
+            t: 0,
+            testClass: true,
+            items: [{ aaa: 1111 }, { aaa: 2222 }, { aaa: 3333 }]
         })
 
-        onShow(() => {
-            homeInit()
+        setTimeout(() => {
+            state.t = 100
+        }, 1000);
 
-            setTimeout(() => {
-                state.t = 100
-            }, 1000);
+        onShow(() => {
+            // homeInit()
         })
 
         function btnClick() {
             state.t++
+            state.testClass = !state.testClass
         }
 
         function toApply() {

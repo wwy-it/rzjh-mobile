@@ -8,14 +8,18 @@ const routes: Tree[] = [
         component: () => import('@/pages/home/home')
     },
     {
-        path: '/apply',
+        path: '/onboard',
         component: () => import('@/pages/apply/apply')
     },
     {
         path: '/amount',
         component: () => import('@/pages/amount/amount')
     },
-   
+    {
+        path: '/mycredit',
+        component: () => import('@/pages/mycredit/mycredit')
+    },
+
 ]
 
 function init() {

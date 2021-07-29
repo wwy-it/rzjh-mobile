@@ -13,7 +13,7 @@ export default {
             },
             t: 0,
             testClass: true,
-            items: [{ aaa: 1111 }, { aaa: 2222 }, { aaa: 3333 }]
+            items: [{ aaa: 1111 }, { aaa: 2222 }, { aaa: 3333 },]
         })
 
         setTimeout(() => {
@@ -31,13 +31,13 @@ export default {
 
         function toApply() {
             push({
-                path: '/apply'
+                path: '/onboard'
             })
         }
 
         function toAmount() {
             push({
-                path: '/amount'
+                path: '/mycredit'
             })
         }
 

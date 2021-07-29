@@ -1,0 +1,12 @@
+<template>
+    <div class="page page-mycredit">
+        <div class="head"></div>
+        <div class="mycredit-phone">
+            <input type="number" id="mycredit-phone" placeholder="请输入手机号"/>
+        </div>
+        <div class="mycredit-content">请输入手机号查询贷款进度吧！</div>
+        <div class="weui-form__opr-area">
+            <a class="weui-btn weui-btn_primary" href="javascript:" id="mycredit-complete">确定</a>
+        </div>
+    </div>
+</template>

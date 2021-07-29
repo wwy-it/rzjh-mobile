@@ -1,4 +1,6 @@
+import { ObjectAny } from './model/cl-tool'
 import { parse } from './cl-htmlparser'
+
 
 /**
 * template模板转换
@@ -53,6 +55,7 @@ export function templateParsing(node: HTMLElement, data?: any): void {
                 for (let i = 0; i < re.length; i++) {
 
                 }
+                console.log(re, 're')
             }
         }
     }
@@ -61,20 +64,29 @@ export function templateParsing(node: HTMLElement, data?: any): void {
 
 /**
  * 表达式的解析
- * @param data 该组件对象
  * @param variable {{}}中的表达式
- * @return {string} 指令解析的结果
+ * @param data 该组件对象
+ * @param t 临时变量，为了解决for循环中的item
+ * @return {any} 指令解析的结果
  */
-export function commandParsing(data, variable): string {
+
+export function commandParsing(variable, data: any, temp?: ObjectAny): any {
     let funVar: string = ''
     for (const key in data) {
         if (Object.prototype.hasOwnProperty.call(data, key)) {
             funVar = funVar + `let ${key}=data.${key};`
         }
     }
-    let fun: string = `\"use strict\"; return (function(data){${funVar} return (${variable});}(data))`
-    // console.log(fun, 'fun')
-    return new Function('data', fun)(data)
+    if (temp) {
+        for (const key in temp) {
+            if (Object.prototype.hasOwnProperty.call(temp, key)) {
+                funVar = funVar + `let ${key}=temp.${key};`
+            }
+        }
+    }
+    // console.log(funVar, 'funVar')
+    let fun: string = `\"use strict\"; return (function(data,temp){${funVar} return (${variable});}(data,temp))`
+    return new Function('data', 'temp', fun)(data, temp)
 }
 
 

@@ -1,4 +1,6 @@
 import { Tree, PushQuery, CreateRouterQuery, ComponentElement } from './model/clear'
+import { ObjectAny } from './model/cl-tool'
+
 import { templateTran, commandParsing } from './cl-tool'
 
 const app: HTMLElement = document.querySelector("#app")
@@ -223,37 +225,48 @@ let contentRE = /(?<=\{\{)([\s\S]+?)(?=\}\})/mg
  * 写了一堆乱七八糟的代码
  * @param node 
  * @param e 
+ * @param t 临时变量，为了解决for循环中的item
  * @returns 
  */
-function templateParsing(node: any, e?: ComponentElement): HTMLElement {
+function templateParsing(node: any, e?: ComponentElement, temp?: ObjectAny): HTMLElement {
     var treeWalker = document.createTreeWalker(node, NodeFilter.SHOW_ALL, null)
     var currentNode: any = treeWalker.currentNode
     while (currentNode) {
         if (currentNode.nodeType === 1) {
-            let attrLenth = currentNode.attributes.length
-            //如果有属性
-            if (attrLenth) {
 
-                //for实现循环处理，先于其他属性执行，重点先与if
-                let attrFor = currentNode.getAttribute('c:for')
-                if (attrFor) {
-                    //获取带{{}}表达式
-                    let variables = attrFor.match(contentRE)
-                    //表达式变量
-                    let variable = variables[0]
-                    let v = commandParsing(e.data, variable)
-                    console.log(v, 8898889)
+            //如果有for for实现循环处理，先于其他属性执行，先与if
+            let attrFor = currentNode.getAttribute('c:for')
+            if (attrFor) {
+                //防止递归无限循环
+                currentNode.removeAttribute("c:for");
 
-                    if (v.length) {
-                        const node: any = document.createElement("div")
-                        for (let i = 0; i < v.length; i++) {
-                            let childNode = currentNode.cloneNode(true);
-                            node.appendChild(childNode)
-                            console.log(node, 'node')
+                //获取带{{}}表达式
+                let variables = attrFor.match(contentRE)
+                //表达式变量
+                let variable = variables[0]
+                let v = commandParsing(variable, e.data, temp)
+                console.log(v, 8898889)
+
+                if (v.length) {
+                    const node: any = document.createElement("div")
+                    for (let i = 0; i < v.length; i++) {
+                        let t = v[i]
+                        const tempAny = {
+                            item: t,
+                            index: i
                         }
+                        let childNode = currentNode.cloneNode(true);
+                        let dom = templateParsing(childNode, e, tempAny)
+                        console.log(dom, 'chindnode')
+                        node.appendChild(childNode)
+                        console.log(node, 'node')
                     }
                 }
+            }
 
+            //如果有属性
+            let attrLenth = currentNode.attributes.length
+            if (attrLenth) {
                 //统一处理其余属性
                 for (let i = 0; i < attrLenth; i++) {
                     //获取属性节点
@@ -267,22 +280,21 @@ function templateParsing(node: any, e?: ComponentElement): HTMLElement {
                         if (attr.name == 'c:if') { //if实现
                             let variables = content.match(contentRE)
                             let variable = variables[0]
-                            let v = commandParsing(e.data, variable)
+                            let v = commandParsing(variable, e.data, temp)
                             currentNode.style.display = v ? 'block' : 'none'
                         } else if (attr.name == 'c:for') {//for 不再处理
                             continue
                         } else {
                             //表达式解析负值
-                            let t = nodeExpression(content, e)
+                            let t = nodeExpression(content, e, temp)
                             attr.value = t
                         }
 
                     }
                 }
-
             }
 
-            //递归先序遍历子节点
+            //如果有点击事件 递归先序遍历子节点
             let tabBool = currentNode.getAttribute("bindtap")
             if (tabBool) {
                 currentNode.addEventListener("click", e[tabBool])
@@ -297,7 +309,7 @@ function templateParsing(node: any, e?: ComponentElement): HTMLElement {
                     let variables = word.match(contentRE)
                     if (variables) {
                         let variable = variables[0]
-                        let v = commandParsing(e.data, variable)
+                        let v = commandParsing(variable, e.data, temp)
                         return v
                     } else {
                         return word
@@ -330,12 +342,12 @@ function cloneElement(dom) {
  * @param e 组建对象
  * @returns 返回解析之后结果
  */
-function nodeExpression(expression: string, e: ComponentElement) {
+function nodeExpression(expression: string, e: ComponentElement, temp: ObjectAny) {
     let t = expression.replace(/\{\{([\s\S]+?)\}\}/mg, (word) => {
         let variables = word.match(contentRE)
         if (variables) {
             let variable = variables[0]
-            let v = commandParsing(e.data, variable)
+            let v = commandParsing(variable, e.data, temp)
             return v
         } else {
             return word

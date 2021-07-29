@@ -31,7 +31,7 @@
         </p>
 
         <ul>
-            <li class="li" c:for="{{items}}"></li>
+            <!-- <li class="li" c:for="{{items}}">{{item.aaa}}{{hello}}</li> -->
         </ul>
 
          <!-- 测试点击方法 -->

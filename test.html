@@ -66,32 +66,37 @@
         // }, 1000)
 
 
-        // function fun(window) {
-        //     console.log(window)
-        //     console.log(window.document)
-        //     console.log(location)
-        // }
-        // fun({
-        //     aaa: 234
-        // })
-
-
-        let contentRE = /(?<=\{\{)([\s\S]+?)(?=\}\})/mg
-
-        let name = 'aaa {{a + b}} ccc {{abd}}';
-        console.log(name, 'name')
-        let uw = name.replace(/\{\{([\s\S]+?)\}\}/mg, function (word) {
-            let variables = word.match(contentRE)
-            if (variables) {
-                let v = variables[0]
-                console.log(v)
-                return v
-            } else {
-                return word
-            }
+        function fun(window) {
+            console.log(window)
+            console.log(window.document)
+            console.log(location)
+        }
+        fun({
+            aaa: 234
         })
 
-        console.log(uw, 555)
+
+        var a = {
+            uid: "1221324234",
+            items: [
+                {
+                    url: "https://bz10-static.oss-accelerate.aliyuncs.com/z/2021-06-28/1715cd76-a8a5-4c2a-9ba9-db1957d0ea3a.png",
+                    width: 100,
+                    height: 100,
+                },
+                {
+                    url: "https://bz10-static.oss-accelerate.aliyuncs.com/z/2021-06-28/1715cd76-a8a5-4c2a-9ba9-db1957d0ea3a.png",
+                    width: 100,
+                    height: 100,
+                },
+            ],
+            title: "这是帖子的标题",
+            content: "这是帖子的内容",
+        }
+
+        let aa = 'z/com/z/2021-05-27/10de2ba8-19a2-4ee7-a534-123d7c0575b4.png'
+        let c = aa.replace(/^.*\/(?=z\/)/g, () => { return '' })
+        console.log(c)
     </script>
 </body>
 
